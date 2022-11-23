@@ -2,13 +2,21 @@
   "name": "my-next-ts-boilerplate",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22.0",
+    "npm": "please-use-yarn"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
+    "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.1",
@@ -28,6 +36,9 @@
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@chakra-ui/storybook-addon": "^4.0.13",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@next/bundle-analyzer": "^13.0.4",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -38,6 +49,8 @@
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.3.0",
     "eslint-plugin-storybook": "^0.6.7",
+    "husky": "^8.0.0",
+    "prettier": "^2.7.1",
     "storybook-addon-next": "^1.6.10"
   },
   "resolutions": {
