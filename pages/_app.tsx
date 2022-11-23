@@ -4,11 +4,19 @@ import type { AppProps } from 'next/app';
 import 'styles/globals.css';
 
 import { theme } from 'theme';
+import { NextPageWithLayout } from './page';
 
-export default function App({ Component, pageProps }: AppProps) {
+interface AppPropsWithLayout extends AppProps {
+  Component: NextPageWithLayout;
+}
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </ChakraProvider>
   );
 }
